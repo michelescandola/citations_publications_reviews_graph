@@ -5,8 +5,14 @@ library(ggplot2)   # to graph everything
 library(ggtext)    # for a very small graphical details
                    # (text of different colours in the secondary y-axis)
 
-## google scholar ID
-id <- "mRc0hxsAAAAJ"
+# in order to find your google and publons id, you can check the urls of your personal pages:
+# for example, my Publons' profile link is https://publons.com/researcher/2654061/michele-scandola
+# so my publons id is 2654061
+# my Google Scholar page is https://scholar.google.com/citations?user=mRc0hxsAAAAJ&hl=en&authuser=1
+# su my scholar id is mRc0hxsAAAAJ
+
+## google scholar ID, you can find it in the url of your page
+id <- "YOUR GOOGLE SCHOLAR ID"
 
 ## get google scholar data
 ct <- get_citation_history(id)
@@ -36,8 +42,9 @@ handle_setheaders(h,
                   "Authorization" = "Token YOUR AUTHORIZATION TOKEN",
                   "Content-Type" = "application/json"
 )
-req <- curl_fetch_memory("https://publons.com//api/v2/academic/review/?academic=2654061&page=1",
+req <- curl_fetch_memory("https://publons.com//api/v2/academic/review/?academic=YOUR PUBLONS ID&page=1",
                          handle = h)
+# you can find your code from the url of your publons page
 tmp <- jsonlite::prettify(rawToChar(req$content))
 tmp1 <- fromJSON(tmp)
 
@@ -48,7 +55,7 @@ reviews <- c()
 for( j in 1:ceiling( count / 10 ) ){
   
   if( i > 1 ){
-    req <- curl_fetch_memory(paste0("https://publons.com//api/v2/academic/review/?academic=2654061&page=", j),
+    req <- curl_fetch_memory(paste0("https://publons.com//api/v2/academic/review/?academic=YOUR PUBLONS ID&page=", j),
                              handle = h)
     tmp <- jsonlite::prettify(rawToChar(req$content))
     
