@@ -2,8 +2,6 @@ library(scholar)   # for google scholar
 library(curl)      # for publons API connections
 library(rjson)     # to read publons data
 library(ggplot2)   # to graph everything
-library(ggtext)    # for a very small graphical details
-                   # (text of different colours in the secondary y-axis)
 
 # in order to find your google and publons id, you can check the urls of your personal pages:
 # for example, my Publons' profile link is https://publons.com/researcher/2654061/michele-scandola
