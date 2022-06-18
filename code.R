@@ -52,15 +52,15 @@ reviews <- c()
 
 for( j in 1:ceiling( count / 10 ) ){
   
-  if( i > 1 ){
-    req <- curl_fetch_memory(paste0("https://publons.com//api/v2/academic/review/?academic=YOUR PUBLONS ID&page=", j),
-                             handle = h)
-    tmp <- jsonlite::prettify(rawToChar(req$content))
-    
-    tmp1 <- fromJSON(tmp)
-  }
-  
   for(i in 1:10){
+    if( i > 1 ){
+      req <- curl_fetch_memory(paste0("https://publons.com//api/v2/academic/review/?academic=2654061&page=", j),
+                               handle = h)
+      tmp <- jsonlite::prettify(rawToChar(req$content))
+      
+      tmp1 <- fromJSON(tmp)
+    }
+    
     reviews <- c( reviews, tmp1$results[i][[1]]$date_reviewed )
   }
 }
