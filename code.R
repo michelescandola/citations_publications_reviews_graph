@@ -54,7 +54,7 @@ for( j in 1:ceiling( count / 10 ) ){
   
   for(i in 1:10){
     if( i > 1 ){
-      req <- curl_fetch_memory(paste0("https://publons.com//api/v2/academic/review/?academic=2654061&page=", j),
+      req <- curl_fetch_memory(paste0("https://publons.com//api/v2/academic/review/?academic=YOUR PUBLONS ID&page=", j),
                                handle = h)
       tmp <- jsonlite::prettify(rawToChar(req$content))
       
